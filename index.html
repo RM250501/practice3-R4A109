@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ヨーロッパ探訪 | 総合トップページ</title>
+    <link rel="stylesheet" href="css/europe.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        /* トップページ専用の追加スタイル */
+        .portal-sections {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            margin-top: 50px;
+        }
+        .portal-card {
+            flex: 1;
+            max-width: 450px;
+            text-align: center;
+        }
+        .portal-btn {
+            display: block;
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #0f172a;
+            color: #d4af37;
+            text-decoration: none;
+            font-weight: bold;
+            border: 1px solid #d4af37;
+            transition: all 0.3s ease;
+        }
+        .portal-btn:hover {
+            background-color: #d4af37;
+            color: #0f172a;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <div class="hero-content">
+            <span class="hero-subtitle">WELCOME TO EUROPE</span>
+            <h1>Grand Portal</h1>
+            <p class="hero-tagline">美しき文学の旋律と、洗練された大陸の美へ</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="intro">
+            <h2>２つの扉から、未知なる旅へ</h2>
+            <p>当サイトは、ヨーロッパの深遠な魅力を「文学・芸術」と「地域・文化」の２つの側面から紐解くデジタルポートフォリオです。気品あるペンと剣に導かれ、言葉が紡ぐ大陸の美しい物語をお楽しみください。</p>
+        </section>
+
+        <div class="portal-sections">
+            
+            <div class="card portal-card">
+                <div class="card-body">
+                    <p class="region-eng">LITERATURE</p>
+                    <h3>ヨーロッパの文学</h3>
+                    <p class="card-text" style="margin-top: 15px;">大文豪たちが紡ぎ出した不朽の名作と、詩的な情景。シェイクスピアの戯曲からロマン主義の小説まで、現代にも鮮やかに息づく言葉の遺産を辿ります。</p>
+                    <a href="history.html" class="portal-btn">文学の扉を開く</a>
+                </div>
+            </div>
+
+            <div class="card portal-card">
+                <div class="card-body">
+                    <p class="region-eng">EXPLORATION</p>
+                    <h3>ヨーロッパの魅力</h3>
+                    <p class="card-text" style="margin-top: 15px;">西欧の芸術、南欧の太陽、そして中東欧のロマンティシズム。現代にも息づく、気品に満ちた各地域の美しい街並みと文化を紹介します。</p>
+                    <a href="europe.html" class="portal-btn">魅力を探索する</a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p class="footer-logo">Europe Travel Portal</p>
+            <p class="footer-copy">&copy; 2026 Europe Travel Guide. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('click', (e) => {
+            const x = e.clientX;
+            const y = e.clientY;
+            const particleCount = 12;
+            for (let i = 0; i < particleCount; i++) {
+                createSpark(x, y);
+            }
+        });
+
+        function createSpark(x, y) {
+            const spark = document.createElement('div');
+            spark.className = 'gold-spark';
+            document.body.appendChild(spark);
+            spark.style.left = `${x}px`;
+            spark.style.top = `${y}px`;
+            const angle = Math.random() * Math.PI * 2;
+            const velocity = Math.random() * 80 + 40; 
+            const destinationX = Math.cos(angle) * velocity;
+            const destinationY = Math.sin(angle) * velocity;
+            const size = Math.random() * 4 + 3;
+            spark.style.width = `${size}px`;
+            spark.style.height = `${size}px`;
+            spark.style.setProperty('--x', `${destinationX}px`);
+            spark.style.setProperty('--y', `${destinationY}px`);
+            spark.addEventListener('animationend', () => {
+                spark.remove();
+            });
+        }
+    </script>
+
+</body>
+</html>
