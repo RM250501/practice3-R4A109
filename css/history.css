@@ -1,0 +1,204 @@
+/* --- リセット & 基本設定 --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', 'Times New Roman', 'Shippori Mincho', 'Sawarabi Mincho', 'serif';
+    line-height: 1.8;
+    color: #333333;
+    background-color: #fcfaf2; /* 温かみのあるアンティークホワイト */
+}
+
+/* --- ヘッダー --- */
+header {
+    background-color: #5c1d24; /* 深みのあるワインレッド */
+    color: #ffffff;
+    padding: 60px 20px;
+    text-align: center;
+    border-bottom: 4px solid #d4af37; /* ゴールドのアント */
+}
+
+header h1 {
+    font-size: 2.5rem;
+    letter-spacing: 0.15em;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1rem;
+    color: #e0d0d0;
+    font-style: italic;
+}
+
+/* --- ナビゲーション --- */
+nav {
+    background-color: #2c2c2c;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li a {
+    display: block;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 15px 25px;
+    font-size: 0.95rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #5c1d24;
+    color: #d4af37;
+}
+
+/* --- レイアウト & メインコンテンツ --- */
+main {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+section {
+    margin-bottom: 50px;
+}
+
+section h2 {
+    font-size: 1.8rem;
+    color: #5c1d24;
+    position: relative;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #e0d5c1;
+}
+
+/* 共通カードスタイル */
+.card {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 4px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border-left: 5px solid #5c1d24;
+}
+
+/* --- グリッドレイアウト（名作紹介） --- */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.book-card {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 4px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e8e2d5;
+    transition: transform 0.3s ease;
+}
+
+.book-card:hover {
+    transform: translateY(-5px);
+}
+
+.category {
+    font-size: 0.75rem;
+    background-color: #e8e2d5;
+    color: #5c1d24;
+    padding: 3px 8px;
+    border-radius: 2px;
+    font-weight: bold;
+}
+
+.book-card h3 {
+    margin-top: 10px;
+    font-size: 1.3rem;
+    color: #1a1a1a;
+}
+
+.author {
+    font-size: 0.85rem;
+    color: #777777;
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+.description {
+    font-size: 0.9rem;
+    color: #444444;
+}
+
+/* --- テーブル（時代区分） --- */
+.era-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 0.95rem;
+}
+
+.era-table th, .era-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #e8e2d5;
+}
+
+.era-table th {
+    background-color: #5c1d24;
+    color: #ffffff;
+}
+
+.era-table tr:nth-child(even) {
+    background-color: #fcfbf7;
+}
+
+/* --- フッター --- */
+footer {
+    background-color: #2c2c2c;
+    color: #a0a0a0;
+    text-align: center;
+    padding: 20px;
+    font-size: 0.85rem;
+    margin-top: 60px;
+}
+
+/* --- レスポンシブ対応 --- */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 2rem;
+    }
+    nav ul {
+        flex-direction: column;
+        text-align: center;
+    }
+    .era-table, .era-table thead, .era-table tbody, .era-table th, .era-table td, .era-table tr {
+        display: block;
+    }
+    .era-table thead {
+        display: none; /* スマホ時はヘッダーを非表示に */
+    }
+    .era-table tr {
+        margin-bottom: 15px;
+        border: 1px solid #e8e2d5;
+        padding: 10px;
+        background: #fff;
+    }
+    .era-table td {
+        border: none;
+        padding: 5px 0;
+    }
+    .era-table td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        display: block;
+        color: #5c1d24;
+    }
+}
