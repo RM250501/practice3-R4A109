@@ -18,9 +18,7 @@ body {
     font-family: "Times New Roman", "Georgia", "Shippori Mincho", "Hiragino Mincho ProN", serif;
     line-height: 1.8;
     color: #3d342e;
-    background-color: #f7f3eb; 
-    background-image: radial-gradient(#eadecc 1px, transparent 1px);
-    background-size: 20px 20px;
+    background-color: transparent; 
 }
 
 a {
@@ -49,6 +47,8 @@ a:hover {
     padding: 20px 40px;
     background-color: #1a1512;
     border-bottom: 3px solid #b8860b;
+    position: relative;
+    z-index: 10;
 }
 
 .nav-logo {
@@ -74,6 +74,8 @@ a:hover {
     text-align: center;
     padding: 100px 20px;
     border-bottom: 1px solid #eadecc;
+    position: relative;
+    z-index: 10;
 }
 
 .sub-hero h1 {
@@ -97,9 +99,11 @@ a:hover {
     gap: 50px;
     margin-top: 60px;
     margin-bottom: 100px;
+    position: relative;
+    z-index: 10;
 }
 
-/* 追従型・サイド目次（左側固定） */
+/* 追従型・サイド目次 */
 .sidebar {
     width: 280px;
     flex-shrink: 0;
@@ -145,7 +149,7 @@ a:hover {
     padding-left: 5px;
 }
 
-/* メインコンテンツ（右側） */
+/* メインコンテンツ */
 .sub-content {
     flex: 1;
     min-width: 0;
@@ -179,7 +183,7 @@ a:hover {
     font-style: italic;
 }
 
-/* --- 1. 分類（ボックスデザイン） --- */
+/* --- 1. 分類（ボックス） --- */
 .category-box {
     background: #fbfaf7;
     border-left: 4px solid #c9a063;
@@ -194,7 +198,7 @@ a:hover {
     font-size: 1.25rem;
 }
 
-/* --- 2. 名作一覧（テーブル表示バグ修正完了） --- */
+/* --- 2. 名作一覧 --- */
 .table-wrapper {
     width: 100%;
     overflow-x: auto;
@@ -204,10 +208,9 @@ a:hover {
     width: 100%;
     border-collapse: collapse;
     margin-top: 15px;
-    table-layout: fixed; /* テーブル幅を完全に固定 */
+    table-layout: fixed;
 }
 
-/* 各列の幅比率を美しく制限 */
 .wagashi-table th:nth-child(1), .wagashi-table td:nth-child(1) { width: 22%; }
 .wagashi-table th:nth-child(2), .wagashi-table td:nth-child(2) { width: 15%; }
 .wagashi-table th:nth-child(3), .wagashi-table td:nth-child(3) { width: 23%; }
@@ -218,7 +221,7 @@ a:hover {
     text-align: left;
     border-bottom: 1px solid #eadecc;
     font-size: 0.95rem;
-    word-wrap: break-word; /* テキスト自動折り返し */
+    word-wrap: break-word;
 }
 
 .wagashi-table th {
@@ -237,10 +240,11 @@ a:hover {
     color: #8c2730;
 }
 
-/* --- 3. 国別カード（グリッド） --- */
+/* --- 3. 国別カード（高さを完全に揃えるグリッドへ改修） --- */
 .season-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    /* PC画面では綺麗な2列×2行の対称グリッドを形成 */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
 }
 
@@ -249,12 +253,20 @@ a:hover {
     border: 1px solid #ede6da;
     padding: 25px;
     border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%; /* 全体の高さを一番高いカードに自動同期 */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .season-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 25px rgba(140, 39, 48, 0.08);
+}
+
+.card-top {
+    height: 100%;
 }
 
 .season-badge {
@@ -308,10 +320,11 @@ a:hover {
     line-height: 1;
 }
 
-/* --- 5. 三大テーマ（ステッチボックス） --- */
+/* --- 5. 三大テーマ（こちらも一列の均等高に改修） --- */
 .material-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    /* 3つすべてが一列に並ぶように自動引き伸ばし調整 */
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 20px;
 }
 
@@ -320,6 +333,9 @@ a:hover {
     padding: 25px;
     border-radius: 6px;
     border: 1px dashed #c9a063;
+    height: 100%; /* 横同士の高さを1ピクセル単位で同期 */
+    display: flex;
+    flex-direction: column;
 }
 
 .material-block h3 {
@@ -329,7 +345,7 @@ a:hover {
     text-align: center;
 }
 
-/* --- 6. 歴史年表（文字重なりバグ修正完了） --- */
+/* --- 6. 歴史年表 --- */
 .timeline {
     position: relative;
     padding-left: 30px;
@@ -358,7 +374,7 @@ a:hover {
 .timeline-header {
     display: flex;
     align-items: center;
-    gap: 15px; /* バッジとタイトルの間に確実な余白を確保 */
+    gap: 15px;
     margin-bottom: 10px;
 }
 
@@ -369,7 +385,7 @@ a:hover {
     padding: 4px 12px;
     border-radius: 4px;
     font-weight: bold;
-    flex-shrink: 0; /* バッジが潰れるのを防ぐ */
+    flex-shrink: 0;
     text-align: center;
     min-width: 80px;
 }
@@ -377,7 +393,7 @@ a:hover {
 .timeline-header h3 {
     font-size: 1.2rem;
     color: #1a1512;
-    margin: 0; /* 余計なマージンをリセット */
+    margin: 0;
 }
 
 .timeline-content {
@@ -404,14 +420,51 @@ a:hover {
     font-size: 1.05rem;
 }
 
-/* --- 8. 嗜みフレーム --- */
+/* --- 8. 読書の嗜み --- */
 .layer-box {
     background: #fdfaf2;
     border: 2px double #c9a063;
 }
 
 /* ==========================================================================
-   5. フッター
+   5. アニメーション背景の設定
+   ========================================================================== */
+.particles-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    background-color: #f5eedf; 
+    background-image: radial-gradient(#dfcfb5 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+.particle {
+    position: absolute;
+    bottom: -150px;
+    background: radial-gradient(circle, rgba(212, 163, 89, 0.38) 0%, rgba(212, 163, 89, 0) 70%);
+    border-radius: 50%;
+    animation: floatUpAnimation infinite linear;
+}
+
+.particle:nth-child(1) { width: 200px; height: 200px; left: 5%; animation-duration: 25s; animation-delay: 0s; }
+.particle:nth-child(2) { width: 350px; height: 350px; left: 25%; animation-duration: 38s; animation-delay: -7s; }
+.particle:nth-child(3) { width: 180px; height: 180px; left: 45%; animation-duration: 22s; animation-delay: -3s; }
+.particle:nth-child(4) { width: 280px; height: 280px; left: 70%; animation-duration: 32s; animation-delay: -12s; }
+.particle:nth-child(5) { width: 220px; height: 220px; left: 88%; animation-duration: 28s; animation-delay: -5s; }
+
+@keyframes floatUpAnimation {
+    0% { transform: translateY(0) scale(1); opacity: 0; }
+    15% { opacity: 1; }
+     Riedel80% { opacity: 1; } 
+    100% { transform: translateY(-120vh) scale(1.3); opacity: 0; }
+}
+
+/* ==========================================================================
+   6. フッター
    ========================================================================== */
 footer {
     background-color: #1a1512;
@@ -421,24 +474,60 @@ footer {
     font-size: 0.9rem;
     letter-spacing: 0.05em;
     border-top: 4px solid #8c2730;
+    position: relative;
+    z-index: 10;
 }
 
 /* ==========================================================================
-   6. レスポンシブ対応（スマホ表示時のみ縦型へ変換）
+   7. トップに戻るボタンの設定
+   ========================================================================== */
+.totop-button {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background-color: #8c2730; 
+    color: #f7f3eb !important;
+    border: 2px solid #c9a063; 
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4rem;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 99;
+    transition: all 0.3s ease;
+}
+
+.totop-button:hover {
+    background-color: #c9a063;
+    color: #1a1512 !important;
+    transform: translateY(-4px);
+    box-shadow: 0 6px 20px rgba(201, 160, 99, 0.4);
+}
+
+/* ==========================================================================
+   8. レスポンシブ対応
    ========================================================================== */
 @media (max-width: 992px) {
     .main-layout {
         flex-direction: column;
         gap: 40px;
     }
-    
     .sidebar {
         width: 100%;
     }
-    
     .sticky-menu {
         position: relative;
         top: 0;
+    }
+    .totop-button {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
     }
 }
 
@@ -449,8 +538,6 @@ footer {
     .content-section {
         padding: 25px;
     }
-    
-    /* スマホ画面の時だけ、テーブルを縦並びのカード型にする指示 */
     .wagashi-table, .wagashi-table tbody, .wagashi-table tr, .wagashi-table td {
         display: block;
         width: 100% !important;
