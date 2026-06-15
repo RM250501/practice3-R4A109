@@ -3,80 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ヨーロッパの魅力を探る旅</title>
+    <title>ヨーロッパの魅力を探る旅 | Discover Europe</title>
     <link rel="stylesheet" href="css/europe.css">
-    <!-- Google Fonts からフォントを読み込み（オプション） -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- ヒーローヘッダー -->
     <header class="hero">
         <div class="hero-content">
+            <span class="hero-subtitle">ELEGANT JOURNEY</span>
             <h1>Discover Europe</h1>
-            <p>歴史と文化が織りなす、美しき大陸への旅</p>
+            <p class="hero-tagline">歴史と芸術、そして美食が織りなす至高の大陸へ</p>
+            <div class="hero-scroll-indicator"></div>
         </div>
     </header>
 
-    <!-- メインコンテンツ -->
     <main class="container">
         
-        <!-- イントロダクション -->
         <section class="intro">
-            <h2>歴史、芸術、そして多様な文化</h2>
-            <p>ヨーロッパは、数千年の歴史を持つ建造物、世界最高峰の芸術、そして国ごとに異なる豊かな食文化が魅力の大陸です。近代的な都市と、まるでおとぎ話のような古い街並みが共存する世界へ出かけてみませんか？</p>
+            <h2>時を越える美しさに出会う</h2>
+            <p>数千年の歴史が息づく壮麗な建築、世界最高峰の芸術、そして国境を越えるたびに表情を変える豊かな食文化。ヨーロッパは、訪れるすべての旅人を魅了し続ける普遍的な美しさを持っています。近代的な洗練とおとぎ話のような古き良き街並みが共存する、憧れの大陸の扉を開いてみましょう。</p>
         </section>
 
-        <!-- 人気のエリア紹介 -->
         <section class="regions">
-            <h2>人気のエリア</h2>
+            <h2>気品溢れる３つのディストリクト</h2>
             <div class="grid">
                 
-                <!-- 西ヨーロッパ -->
                 <div class="card">
-                    <div class="card-img west"></div>
+                    <div class="card-img west">
+                        <span class="card-badge">Art & Fashion</span>
+                    </div>
                     <div class="card-body">
                         <h3>西ヨーロッパ</h3>
-                        <p>フランスのパリ、イギリスのロンドンなど、世界のトレンドをリードする大都市が集まります。芸術、ファッション、そして洗練された料理を堪能できます。</p>
+                        <p class="region-eng">Western Europe</p>
+                        <p class="card-text">フランスのパリ、イギリスのロンドンなど、世界のトレンドと文化をリードする大都市が日常を華やかに彩ります。最先端のモード、宮廷芸術、そして洗練された本格ガストロノミーを堪能する特別なひとときを。</p>
+                        <a href="#" class="btn-explore">詳しく探る</a>
                     </div>
                 </div>
 
-                <!-- 南ヨーロッパ -->
                 <div class="card">
-                    <div class="card-img south"></div>
+                    <div class="card-img south">
+                        <span class="card-badge">History & Sun</span>
+                    </div>
                     <div class="card-body">
                         <h3>南ヨーロッパ</h3>
-                        <p>イタリアやスペイン、ギリシャなど、燦々と降り注ぐ太陽と地中海が魅力。古代ローマの遺跡や、豊かな味わいの地中海料理が楽しめます。</p>
+                        <p class="region-eng">Southern Europe</p>
+                        <p class="card-text">イタリア、スペイン、ギリシャなど、燦々と降り注ぐ太陽と鮮やかな地中海がどこまでも広がる楽園。古代ローマの息吹を残す壮大な遺跡群、陽気な街並み、そして素材の個性を活かした豊かな地中海料理が心と身体を満たします。</p>
+                        <a href="#" class="btn-explore">詳しく探る</a>
                     </div>
                 </div>
 
-                <!-- 中央・東ヨーロッパ -->
                 <div class="card">
-                    <div class="card-img east"></div>
+                    <div class="card-img east">
+                        <span class="card-badge">Music & Romance</span>
+                    </div>
                     <div class="card-body">
                         <h3>中央・東ヨーロッパ</h3>
-                        <p>チェコのプラハやオーストリアのウィーンなど、中世の面影を色濃く残す美しい街並みが特徴。音楽と建築の歴史に浸ることができます。</p>
+                        <p class="region-eng">Central & Eastern Europe</p>
+                        <p class="card-text">チェコのプラハやオーストリアのウィーンなど、中世のロマンティシズムを色濃く残す美しい古都たち。クラシック音楽の調べに耳を傾けながら、石畳の街路や壮麗なゴシック・バロック建築に浸るノスタルジックな旅路へ。</p>
+                        <a href="#" class="btn-explore">詳しく探る</a>
                     </div>
                 </div>
 
             </div>
         </section>
 
-        <!-- 旅のハイライト（引用・ポイント） -->
         <section class="highlights">
-            <blockquote>
-                「旅とは、目的地ではなく、新しいものの見方を見つけることだ。」
-                <span class="author">— マルセル・プルースト</span>
-            </blockquote>
+            <div class="quote-wrapper">
+                <blockquote>
+                    「旅とは、目的地に到着することではなく、新しいものの見方、数々の美しい芸術、そして新しい自分自身を発見することだ。」
+                </blockquote>
+                <span class="author">— Marcel Proust</span>
+            </div>
         </section>
 
     </main>
 
-    <!-- フッター -->
     <footer>
-        <p>&copy; 2026 Europe Travel Guide. All rights reserved.</p>
+        <div class="footer-content">
+            <p class="footer-logo">Discover Europe</p>
+            <p class="footer-copy">&copy; 2026 Europe Travel Guide. All rights reserved.</p>
+        </div>
     </footer>
 
 </body>
