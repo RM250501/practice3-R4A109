@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ヨーロッパの魅力を探る旅 | Discover Europe</title>
+    <link rel="stylesheet" href="css/europe.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="hero">
+        <div class="hero-content">
+            <span class="hero-subtitle">ELEGANT JOURNEY</span>
+            <h1>Discover Europe</h1>
+            <p class="hero-tagline">歴史と芸術、精度高き美が織りなす至高の大陸へ</p>
+            <div class="hero-scroll-indicator"></div>
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <section class="intro">
+            <h2>時を越える美しさに出会う</h2>
+            <p>数千年の歴史が息づく壮麗な建築、世界最高峰の芸術、精度高く洗練された豊かな食文化。ヨーロッパは、訪れるすべての旅人を魅了し続ける普遍的な美しさを持っています。近代的な洗練とおとぎ話のような古き良き街並みが共存する、憧れの大陸の扉を開いてみましょう。</p>
+        </section>
+
+        <section class="regions">
+            <h2>気品溢れる３つのディストリクト</h2>
+            <div class="grid">
+                
+                <div class="card">
+                    <div class="card-img west">
+                        <span class="card-badge">Art & Fashion</span>
+                    </div>
+                    <div class="card-body">
+                        <h3>西ヨーロッパ</h3>
+                        <p class="region-eng">Western Europe</p>
+                        <p class="card-text">フランスのパリ、イギリスのロンドンなど、世界のトレンドと文化をリードする大都市が日常を華やかに彩ります。最先端のモード、宮廷芸術、そして洗練された本格ガストロノミーを堪能する特別なひとときを。</p>
+                        <a href="#" class="btn-explore">詳しく探る</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-img south">
+                        <span class="card-badge">History & Sun</span>
+                    </div>
+                    <div class="card-body">
+                        <h3>南ヨーロッパ</h3>
+                        <p class="region-eng">Southern Europe</p>
+                        <p class="card-text">イタリア、スペイン、ギリシャなど、燦々と降り注ぐ太陽と鮮やかな地中海がどこまでも広がる楽園。古代ローマの息吹を残す壮大な遺跡群、陽気な街並み、そして素材の個性を活かした豊かな地中海料理が心と身体を満たします。</p>
+                        <a href="#" class="btn-explore">詳しく探る</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-img east">
+                        <span class="card-badge">Music & Romance</span>
+                    </div>
+                    <div class="card-body">
+                        <h3>中央・東ヨーロッパ</h3>
+                        <p class="region-eng">Central & Eastern Europe</p>
+                        <p class="card-text">チェコのプラハやオーストリアのウィーンなど、中世のロマンティシズムを色濃く残す美しい古都たち。クラシック音楽の調べに耳を傾けながら、石畳の街路や壮麗なゴシック・バロック建築に浸るノスタルジックな旅路へ。</p>
+                        <a href="#" class="btn-explore">詳しく探る</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="highlights">
+            <div class="quote-wrapper">
+                <blockquote>
+                    「旅とは、目的地に到着することではなく、新しいものの見方、そして新しい自分自身を発見することだ。」
+                </blockquote>
+                <span class="author">— Marcel Proust</span>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p class="footer-logo">Discover Europe</p>
+            <p class="footer-copy">&copy; 2026 Europe Travel Guide. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('click', (e) => {
+            // クリックされた絶対座標(X, Y)を取得
+            const x = e.clientX;
+            const y = e.clientY;
+            
+            // 1回のクリックで飛び散る火花の数
+            const particleCount = 12;
+            
+            for (let i = 0; i < particleCount; i++) {
+                createSpark(x, y);
+            }
+        });
+
+        function createSpark(x, y) {
+            const spark = document.createElement('div');
+            spark.className = 'gold-spark';
+            document.body.appendChild(spark);
+            
+            // 火花の発生初期位置を設定
+            spark.style.left = `${x}px`;
+            spark.style.top = `${y}px`;
+            
+            // 360度ランダムな飛散方向と、飛び出す距離(速度)を計算
+            const angle = Math.random() * Math.PI * 2;
+            const velocity = Math.random() * 80 + 40; 
+            const destinationX = Math.cos(angle) * velocity;
+            const destinationY = Math.sin(angle) * velocity;
+            
+            // 火花のランダムなサイズ (3px 〜 7px)
+            const size = Math.random() * 4 + 3;
+            spark.style.width = `${size}px`;
+            spark.style.height = `${size}px`;
+            
+            // 計算した移動先の距離をCSSのカスタムプロパティ（変数）へ引き渡す
+            spark.style.setProperty('--x', `${destinationX}px`);
+            spark.style.setProperty('--y', `${destinationY}px`);
+            
+            // CSSアニメーション終了（0.6秒後）にDOMから要素を自動削除
+            spark.addEventListener('animationend', () => {
+                spark.remove();
+            });
+        }
+    </script>
+
+</body>
+</html>

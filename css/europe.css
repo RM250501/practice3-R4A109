@@ -1,0 +1,467 @@
+/* ==========================================================================
+   基本設定 & リセット（洗練されたベース）
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Serif JP', 'Playfair Display', Georgia, 'Hiragino Mincho ProN', serif;
+    line-height: 1.85;
+    color: #1e293b;
+    background-color: #faf7f2;
+    overflow-x: hidden;
+    
+    /* ------------------------------------------------------------
+       ⚔️ 通常時のマウスカーソル設定（ローカル回避・修正版）
+       cssフォルダから見て1つ上の階層（..）にある直下の画像を参照します。
+       ------------------------------------------------------------ */
+    cursor: url('../rapier-normal.png') 0 0, auto;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 20px;
+}
+
+/* ==========================================================================
+   ⚔️ リンク・ボタンホバー時のマウスカーソル設定（ローカル回避・修正版）
+   カードや各種ボタンに載った際、少し角度が変化した別画像に切り替えます。
+   ========================================================================== */
+a, button, .btn-explore, .card, .hero-scroll-indicator {
+    cursor: url('../rapier-hover.png') 0 0, pointer;
+}
+
+/* ==========================================================================
+   ✨ クリック時に弾けるゴールド火花（スパーク粒子）のビジュアル設定
+   ========================================================================== */
+.gold-spark {
+    position: fixed;
+    pointer-events: none; /* カーソル選択やクリックの邪魔を完全に排除 */
+    background: radial-gradient(circle, #ffffff 10%, #f39c12 50%, #d4af37 100%);
+    border-radius: 50%;
+    z-index: 9999;
+    box-shadow: 0 0 10px #f1c40f, 0 0 20px #d4af37;
+    animation: explode 0.6s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+}
+
+@keyframes explode {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+    80% {
+        opacity: 0.8;
+    }
+    100% {
+        /* JavaScript側でランダム計算された座標(--x, --y)へ飛びながら消滅 */
+        transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(0);
+        opacity: 0;
+    }
+}
+
+/* ==========================================================================
+   アニメーションキーフレームの定義
+   ========================================================================== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes flash {
+    0% { left: -100%; opacity: 0; }
+    50% { opacity: 0.25; }
+    100% { left: 100%; opacity: 0; }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
+    40% { transform: translateY(-10px) translateX(-50%); }
+    60% { transform: translateY(-5px) translateX(-50%); }
+}
+
+/* ==========================================================================
+   ヒーローヘッダー
+   ========================================================================== */
+.hero {
+    height: 85vh;
+    min-height: 550px;
+    background: linear-gradient(135deg, rgba(15, 32, 67, 0.85), rgba(80, 19, 43, 0.9)),
+                linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1));
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+    position: relative;
+    box-shadow: inset 0 -15px 30px rgba(0,0,0,0.3);
+}
+
+.hero-content {
+    animation: fadeInUp 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    padding: 0 20px;
+}
+
+.hero-subtitle {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    letter-spacing: 6px;
+    color: #dfd4bf;
+    display: block;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.hero-content h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 5rem;
+    font-weight: 700;
+    letter-spacing: 5px;
+    margin-bottom: 20px;
+    color: #d4af37;
+    text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.5), 0 0 40px rgba(212, 175, 55, 0.25);
+}
+
+.hero-tagline {
+    font-size: 1.4rem;
+    font-weight: 400;
+    letter-spacing: 3px;
+    color: #f8fafc;
+    text-shadow: 1px 2px 5px rgba(0, 0, 0, 0.6);
+}
+
+.hero-scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 2s infinite;
+}
+
+.hero-scroll-indicator::after {
+    content: '↓';
+    color: #d4af37;
+    font-size: 1.6rem;
+    font-family: 'Playfair Display', serif;
+}
+
+/* ==========================================================================
+   セクション共通
+   ========================================================================== */
+section {
+    margin-bottom: 100px;
+}
+
+h2 {
+    font-family: 'Noto Serif JP', 'Playfair Display', serif;
+    font-size: 2.4rem;
+    text-align: center;
+    margin-bottom: 50px;
+    color: #0f172a;
+    position: relative;
+    padding-bottom: 20px;
+    letter-spacing: 3px;
+}
+
+h2::after {
+    content: '◆';
+    font-size: 0.75rem;
+    color: #d4af37;
+    position: absolute;
+    bottom: -7px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #faf7f2;
+    padding: 0 15px;
+    z-index: 2;
+}
+
+h2::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #b91c1c, #d4af37, #b91c1c, transparent);
+    z-index: 1;
+}
+
+.intro {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto 100px auto;
+}
+
+.intro p {
+    font-size: 1.2rem;
+    color: #334155;
+    line-height: 2.2;
+    text-align: justify;
+}
+
+/* ==========================================================================
+   グリッドレイアウト（カード）
+   ========================================================================== */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 40px;
+}
+
+.card {
+    background: #ffffff;
+    border-radius: 2px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(15, 23, 42, 0.04);
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+}
+
+.card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 25px 50px rgba(15, 32, 67, 0.12);
+    border-color: rgba(212, 175, 55, 0.5);
+}
+
+.card-img {
+    height: 260px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-img::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 1;
+}
+
+.card:hover .card-img::before {
+    transform: scale(1.08);
+}
+
+.card-img::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to bottom, transparent 50%, rgba(15, 23, 42, 0.6));
+    z-index: 2;
+}
+
+.card-img.west::before { background-image: linear-gradient(45deg, #1e293b, #334155); }
+.card-img.south::before { background-image: linear-gradient(45deg, #7c2d12, #9a3412); }
+.card-img.east::before { background-image: linear-gradient(45deg, #4c1d95, #5b21b6); }
+
+.card-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: rgba(15, 23, 42, 0.85);
+    color: #dfd4bf;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.75rem;
+    padding: 4px 12px;
+    letter-spacing: 1.5px;
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    z-index: 3;
+}
+
+.card-body {
+    padding: 35px;
+    background: #ffffff;
+    position: relative;
+    z-index: 2;
+}
+
+.card-body h3 {
+    font-size: 1.45rem;
+    color: #0f172a;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.region-eng {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.85rem;
+    color: #d4af37;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.card-text {
+    font-size: 0.95rem;
+    color: #475569;
+    text-align: justify;
+    line-height: 1.9;
+    margin-bottom: 25px;
+}
+
+/* ==========================================================================
+   ボタンデザイン
+   ========================================================================== */
+.btn-explore {
+    display: inline-block;
+    padding: 11px 28px;
+    background-color: #0f172a;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    border: 1px solid #d4af37;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    z-index: 1;
+}
+
+.btn-explore:hover {
+    background-color: #881337;
+    box-shadow: 0 6px 20px rgba(136, 19, 55, 0.35);
+    color: #ffffff;
+}
+
+.btn-explore::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.35), transparent);
+    transform: skewX(-30deg);
+    transition: none;
+}
+
+.btn-explore:hover::before {
+    left: 100%;
+    transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ==========================================================================
+   ハイライト
+   ========================================================================== */
+.highlights {
+    background: linear-gradient(135deg, #090d16, #1e111d);
+    padding: 70px 40px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(212, 175, 55, 0.35);
+    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.15);
+}
+
+.highlights::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(to right, transparent, rgba(212, 175, 55, 0.12), transparent);
+    transform: skewX(-20deg);
+    animation: flash 7s infinite ease-in-out;
+}
+
+.quote-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+blockquote {
+    font-family: 'Noto Serif JP', 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-style: italic;
+    color: #dfd4bf;
+    line-height: 2.1;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.author {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    color: #d4af37;
+    letter-spacing: 3px;
+    font-style: normal;
+}
+
+/* ==========================================================================
+   フッター
+   ========================================================================== */
+footer {
+    background-color: #090d16;
+    color: #64748b;
+    text-align: center;
+    padding: 50px 20px;
+    border-top: 4px solid #d4af37;
+}
+
+.footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    color: #dfd4bf;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+}
+
+.footer-copy {
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
+/* ==========================================================================
+   レスポンシブ対応
+   ========================================================================== */
+@media (max-width: 768px) {
+    .container {
+        padding: 50px 20px;
+    }
+    .hero {
+        height: 70vh;
+    }
+    .hero-content h1 {
+        font-size: 3.2rem;
+    }
+    .hero-tagline {
+        font-size: 1.15rem;
+    }
+    h2 {
+        font-size: 1.85rem;
+    }
+    .grid {
+        gap: 30px;
+    }
+    .card-img {
+        height: 220px;
+    }
+    .highlights {
+        padding: 50px 20px;
+    }
+    blockquote {
+        font-size: 1.2rem;
+    }
+}

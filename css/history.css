@@ -1,0 +1,568 @@
+@charset "UTF-8";
+
+/* ==========================================================================
+   1. 全体設定・リセット
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 30px;
+}
+
+body {
+    font-family: "Times New Roman", "Georgia", "Shippori Mincho", "Hiragino Mincho ProN", serif;
+    line-height: 1.8;
+    color: #3d342e;
+    background-color: transparent; 
+}
+
+a {
+    color: #8c2730;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: #d4a359;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 25px;
+}
+
+/* ==========================================================================
+   2. ヘッダー・ナビゲーション
+   ========================================================================== */
+.sub-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: #1a1512;
+    border-bottom: 3px solid #b8860b;
+    position: relative;
+    z-index: 10;
+}
+
+.nav-logo {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #f7f3eb !important;
+    letter-spacing: 0.1em;
+}
+
+.back-link {
+    color: #c9a063 !important;
+    font-size: 0.9rem;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+.sub-hero {
+    background: linear-gradient(rgba(40, 24, 18, 0.85), rgba(40, 24, 18, 0.85)), 
+                url('https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=1200') center/cover no-repeat;
+    color: #f7f3eb;
+    text-align: center;
+    padding: 100px 20px;
+    border-bottom: 1px solid #eadecc;
+    position: relative;
+    z-index: 10;
+}
+
+.sub-hero h1 {
+    font-size: 2.8rem;
+    letter-spacing: 0.15em;
+    margin-bottom: 15px;
+    font-weight: 400;
+}
+
+.sub-hero p {
+    font-size: 1.1rem;
+    color: #d4c5b3;
+    font-style: italic;
+}
+
+/* ==========================================================================
+   3. レイアウト（左目次 ＋ 右メインコンテンツ）
+   ========================================================================== */
+.main-layout {
+    display: flex;
+    gap: 50px;
+    margin-top: 60px;
+    margin-bottom: 100px;
+    position: relative;
+    z-index: 10;
+}
+
+/* 追従型・サイド目次 */
+.sidebar {
+    width: 280px;
+    flex-shrink: 0;
+}
+
+.sticky-menu {
+    position: sticky;
+    top: 40px;
+    background: #ffffff;
+    padding: 30px 25px;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(40, 24, 18, 0.06);
+    border: 1px solid #e3dac9;
+    border-top: 4px solid #8c2730;
+}
+
+.sticky-menu h3 {
+    font-size: 1.2rem;
+    color: #1a1512;
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #eadecc;
+    letter-spacing: 0.05em;
+}
+
+.sticky-menu ul {
+    list-style: none;
+}
+
+.sticky-menu ul li {
+    margin-bottom: 12px;
+}
+
+.sticky-menu ul li a {
+    display: block;
+    font-size: 0.95rem;
+    color: #5c4d43;
+    padding: 4px 0;
+}
+
+.sticky-menu ul li a:hover {
+    color: #8c2730;
+    padding-left: 5px;
+}
+
+/* メインコンテンツ */
+.sub-content {
+    flex: 1;
+    min-width: 0;
+}
+
+/* ==========================================================================
+   4. 各コンテンツセクション（共通スタイル）
+   ========================================================================== */
+.content-section {
+    background: #ffffff;
+    padding: 45px;
+    border-radius: 8px;
+    margin-bottom: 40px;
+    box-shadow: 0 6px 20px rgba(40, 24, 18, 0.03);
+    border: 1px solid #ede6da;
+}
+
+.content-section h2 {
+    font-size: 1.8rem;
+    color: #8c2730;
+    margin-bottom: 25px;
+    font-weight: 500;
+    border-bottom: 2px solid #eadecc;
+    padding-bottom: 10px;
+}
+
+.lead {
+    font-size: 1.1rem;
+    color: #5c4d43;
+    margin-bottom: 30px;
+    font-style: italic;
+}
+
+/* --- 1. 分類（ボックス） --- */
+.category-box {
+    background: #fbfaf7;
+    border-left: 4px solid #c9a063;
+    padding: 25px;
+    margin-bottom: 20px;
+    border-radius: 0 4px 4px 0;
+}
+
+.category-box h3 {
+    color: #1a1512;
+    margin-bottom: 10px;
+    font-size: 1.25rem;
+}
+
+/* --- 2. 名作一覧 --- */
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.wagashi-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    table-layout: fixed;
+}
+
+.wagashi-table th:nth-child(1), .wagashi-table td:nth-child(1) { width: 22%; }
+.wagashi-table th:nth-child(2), .wagashi-table td:nth-child(2) { width: 15%; }
+.wagashi-table th:nth-child(3), .wagashi-table td:nth-child(3) { width: 23%; }
+.wagashi-table th:nth-child(4), .wagashi-table td:nth-child(4) { width: 40%; }
+
+.wagashi-table th, .wagashi-table td {
+    padding: 14px 12px;
+    text-align: left;
+    border-bottom: 1px solid #eadecc;
+    font-size: 0.95rem;
+    word-wrap: break-word;
+}
+
+.wagashi-table th {
+    background-color: #8c2730;
+    color: #ffffff;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+}
+
+.wagashi-table tr:nth-child(even) {
+    background-color: #fdfcf9;
+}
+
+.table-name {
+    font-weight: bold;
+    color: #8c2730;
+}
+
+/* --- 3. 国別カード（高さを完全に揃えるグリッドへ改修） --- */
+.season-grid {
+    display: grid;
+    /* PC画面では綺麗な2列×2行の対称グリッドを形成 */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.season-card {
+    background: #fdfcf9;
+    border: 1px solid #ede6da;
+    padding: 25px;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%; /* 全体の高さを一番高いカードに自動同期 */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.season-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(140, 39, 48, 0.08);
+}
+
+.card-top {
+    height: 100%;
+}
+
+.season-badge {
+    display: inline-block;
+    font-size: 0.8rem;
+    padding: 2px 12px;
+    border-radius: 50px;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.season-badge.spring { background-color: #a3b899; }
+.season-badge.summer { background-color: #94b4be; }
+.season-badge.autumn { background-color: #c08e7b; }
+.season-badge.winter { background-color: #9ca3b0; }
+
+.season-card h3 {
+    font-size: 1.15rem;
+    margin-bottom: 10px;
+    color: #1a1512;
+}
+
+/* --- 4. 背景（行事リスト） --- */
+.event-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.event-item {
+    position: relative;
+    padding-left: 60px;
+}
+
+.event-item h4 {
+    font-size: 1.2rem;
+    color: #1a1512;
+    margin-bottom: 8px;
+}
+
+.event-item h4 span {
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 1.5rem;
+    font-family: 'Georgia', serif;
+    color: #c9a063;
+    font-style: italic;
+    font-weight: bold;
+    border-bottom: 2px solid #eadecc;
+    line-height: 1;
+}
+
+/* --- 5. 三大テーマ（こちらも一列の均等高に改修） --- */
+.material-container {
+    display: grid;
+    /* 3つすべてが一列に並ぶように自動引き伸ばし調整 */
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.material-block {
+    background: #faf6f0;
+    padding: 25px;
+    border-radius: 6px;
+    border: 1px dashed #c9a063;
+    height: 100%; /* 横同士の高さを1ピクセル単位で同期 */
+    display: flex;
+    flex-direction: column;
+}
+
+.material-block h3 {
+    color: #8c2730;
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+/* --- 6. 歴史年表 --- */
+.timeline {
+    position: relative;
+    padding-left: 30px;
+    margin-top: 20px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 10px;
+    bottom: 10px;
+    width: 2px;
+    background: #eadecc;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 35px;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.timeline-era {
+    background: #8c2730;
+    color: #ffffff;
+    font-size: 0.75rem;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-weight: bold;
+    flex-shrink: 0;
+    text-align: center;
+    min-width: 80px;
+}
+
+.timeline-header h3 {
+    font-size: 1.2rem;
+    color: #1a1512;
+    margin: 0;
+}
+
+.timeline-content {
+    padding-left: 5px;
+}
+
+/* --- 7. 五感リスト --- */
+.art-list {
+    list-style: none;
+    margin-top: 20px;
+}
+
+.art-list li {
+    padding: 12px 0;
+    border-bottom: 1px dashed #eadecc;
+}
+
+.art-list li:last-child {
+    border-bottom: none;
+}
+
+.art-list strong {
+    color: #8c2730;
+    font-size: 1.05rem;
+}
+
+/* --- 8. 読書の嗜み --- */
+.layer-box {
+    background: #fdfaf2;
+    border: 2px double #c9a063;
+}
+
+/* ==========================================================================
+   5. アニメーション背景の設定
+   ========================================================================== */
+.particles-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    background-color: #f5eedf; 
+    background-image: radial-gradient(#dfcfb5 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+.particle {
+    position: absolute;
+    bottom: -150px;
+    background: radial-gradient(circle, rgba(212, 163, 89, 0.38) 0%, rgba(212, 163, 89, 0) 70%);
+    border-radius: 50%;
+    animation: floatUpAnimation infinite linear;
+}
+
+.particle:nth-child(1) { width: 200px; height: 200px; left: 5%; animation-duration: 25s; animation-delay: 0s; }
+.particle:nth-child(2) { width: 350px; height: 350px; left: 25%; animation-duration: 38s; animation-delay: -7s; }
+.particle:nth-child(3) { width: 180px; height: 180px; left: 45%; animation-duration: 22s; animation-delay: -3s; }
+.particle:nth-child(4) { width: 280px; height: 280px; left: 70%; animation-duration: 32s; animation-delay: -12s; }
+.particle:nth-child(5) { width: 220px; height: 220px; left: 88%; animation-duration: 28s; animation-delay: -5s; }
+
+@keyframes floatUpAnimation {
+    0% { transform: translateY(0) scale(1); opacity: 0; }
+    15% { opacity: 1; }
+     Riedel80% { opacity: 1; } 
+    100% { transform: translateY(-120vh) scale(1.3); opacity: 0; }
+}
+
+/* ==========================================================================
+   6. フッター
+   ========================================================================== */
+footer {
+    background-color: #1a1512;
+    color: #9e938a;
+    text-align: center;
+    padding: 30px;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    border-top: 4px solid #8c2730;
+    position: relative;
+    z-index: 10;
+}
+
+/* ==========================================================================
+   7. トップに戻るボタンの設定
+   ========================================================================== */
+.totop-button {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background-color: #8c2730; 
+    color: #f7f3eb !important;
+    border: 2px solid #c9a063; 
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4rem;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 99;
+    transition: all 0.3s ease;
+}
+
+.totop-button:hover {
+    background-color: #c9a063;
+    color: #1a1512 !important;
+    transform: translateY(-4px);
+    box-shadow: 0 6px 20px rgba(201, 160, 99, 0.4);
+}
+
+/* ==========================================================================
+   8. レスポンシブ対応
+   ========================================================================== */
+@media (max-width: 992px) {
+    .main-layout {
+        flex-direction: column;
+        gap: 40px;
+    }
+    .sidebar {
+        width: 100%;
+    }
+    .sticky-menu {
+        position: relative;
+        top: 0;
+    }
+    .totop-button {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+    }
+}
+
+@media (max-width: 600px) {
+    .sub-hero h1 {
+        font-size: 2rem;
+    }
+    .content-section {
+        padding: 25px;
+    }
+    .wagashi-table, .wagashi-table tbody, .wagashi-table tr, .wagashi-table td {
+        display: block;
+        width: 100% !important;
+    }
+    .wagashi-table thead {
+        display: none;
+    }
+    .wagashi-table tr {
+        margin-bottom: 15px;
+        border: 1px solid #ede6da;
+        padding: 10px;
+        background: #fdfcf9;
+    }
+    .wagashi-table td {
+        text-align: right;
+        padding: 8px 5px;
+        border-bottom: 1px dotted #eadecc;
+    }
+    .wagashi-table td:last-child {
+        border-bottom: none;
+    }
+    .wagashi-table td::before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        color: #8c2730;
+    }
+}
