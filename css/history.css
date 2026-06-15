@@ -9,18 +9,17 @@
     box-sizing: border-box;
 }
 
-/* スムーズスクロールの魔法（目次クリック時にぬるっと動きます） */
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 40px; /* 固定ヘッダーなどがある場合の余白調整 */
+    scroll-padding-top: 30px;
 }
 
 body {
     font-family: "Times New Roman", "Georgia", "Shippori Mincho", "Hiragino Mincho ProN", serif;
     line-height: 1.8;
-    color: #3d342e; /* 柔らかいアンティーク黒 */
-    background-color: #f7f3eb; /* 洋書のようなクラシックベージュ */
-    background-image: radial-gradient(#eadecc 1px, transparent 1px); /* 微細なテクスチャ感 */
+    color: #3d342e;
+    background-color: #f7f3eb; 
+    background-image: radial-gradient(#eadecc 1px, transparent 1px);
     background-size: 20px 20px;
 }
 
@@ -48,8 +47,8 @@ a:hover {
     justify-content: space-between;
     align-items: center;
     padding: 20px 40px;
-    background-color: #1a1512; /* 深いクラシックブラック */
-    border-bottom: 3px solid #b8860b; /* ゴールドのライン */
+    background-color: #1a1512;
+    border-bottom: 3px solid #b8860b;
 }
 
 .nav-logo {
@@ -68,10 +67,9 @@ a:hover {
     text-decoration: underline;
 }
 
-/* メインビジュアル（洋書の表紙風） */
 .sub-hero {
     background: linear-gradient(rgba(40, 24, 18, 0.85), rgba(40, 24, 18, 0.85)), 
-                url('https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=1200') center/cover no-repeat; /* 洋書風のダミー背景 */
+                url('https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=1200') center/cover no-repeat;
     color: #f7f3eb;
     text-align: center;
     padding: 100px 20px;
@@ -92,7 +90,7 @@ a:hover {
 }
 
 /* ==========================================================================
-   3. レイアウト（メイン ＋ サイド追従目次）
+   3. レイアウト（左目次 ＋ 右メインコンテンツ）
    ========================================================================== */
 .main-layout {
     display: flex;
@@ -101,13 +99,7 @@ a:hover {
     margin-bottom: 100px;
 }
 
-/* メインコンテンツ（左側） */
-.sub-content {
-    flex: 1;
-    min-width: 0; /* 折り返し崩れ防止 */
-}
-
-/* 追従型・サイド目次（右側） */
+/* 追従型・サイド目次（左側固定） */
 .sidebar {
     width: 280px;
     flex-shrink: 0;
@@ -115,13 +107,13 @@ a:hover {
 
 .sticky-menu {
     position: sticky;
-    top: 40px; /* 画面の上から40pxの位置に固定 */
+    top: 40px;
     background: #ffffff;
     padding: 30px 25px;
     border-radius: 8px;
     box-shadow: 0 10px 30px rgba(40, 24, 18, 0.06);
     border: 1px solid #e3dac9;
-    border-top: 4px solid #8c2730; /* ボルドーのアクセント */
+    border-top: 4px solid #8c2730;
 }
 
 .sticky-menu h3 {
@@ -150,7 +142,13 @@ a:hover {
 
 .sticky-menu ul li a:hover {
     color: #8c2730;
-    padding-left: 5px; /* ホバー時に少し右に動くおしゃれ演出 */
+    padding-left: 5px;
+}
+
+/* メインコンテンツ（右側） */
+.sub-content {
+    flex: 1;
+    min-width: 0;
 }
 
 /* ==========================================================================
@@ -167,7 +165,7 @@ a:hover {
 
 .content-section h2 {
     font-size: 1.8rem;
-    color: #8c2730; /* ボルドー */
+    color: #8c2730;
     margin-bottom: 25px;
     font-weight: 500;
     border-bottom: 2px solid #eadecc;
@@ -181,10 +179,10 @@ a:hover {
     font-style: italic;
 }
 
-/* --- 1. 和菓子の分類（ボックスデザイン） --- */
+/* --- 1. 分類（ボックスデザイン） --- */
 .category-box {
     background: #fbfaf7;
-    border-left: 4px solid #c9a063; /* 落ち着いたゴールド */
+    border-left: 4px solid #c9a063;
     padding: 25px;
     margin-bottom: 20px;
     border-radius: 0 4px 4px 0;
@@ -196,8 +194,9 @@ a:hover {
     font-size: 1.25rem;
 }
 
-/* --- 2. 代表的な和菓子一覧（アンティークテーブル） --- */
+/* --- 2. 名作一覧（テーブル表示バグ修正完了） --- */
 .table-wrapper {
+    width: 100%;
     overflow-x: auto;
 }
 
@@ -205,12 +204,21 @@ a:hover {
     width: 100%;
     border-collapse: collapse;
     margin-top: 15px;
+    table-layout: fixed; /* テーブル幅を完全に固定 */
 }
 
+/* 各列の幅比率を美しく制限 */
+.wagashi-table th:nth-child(1), .wagashi-table td:nth-child(1) { width: 22%; }
+.wagashi-table th:nth-child(2), .wagashi-table td:nth-child(2) { width: 15%; }
+.wagashi-table th:nth-child(3), .wagashi-table td:nth-child(3) { width: 23%; }
+.wagashi-table th:nth-child(4), .wagashi-table td:nth-child(4) { width: 40%; }
+
 .wagashi-table th, .wagashi-table td {
-    padding: 15px;
+    padding: 14px 12px;
     text-align: left;
     border-bottom: 1px solid #eadecc;
+    font-size: 0.95rem;
+    word-wrap: break-word; /* テキスト自動折り返し */
 }
 
 .wagashi-table th {
@@ -229,7 +237,7 @@ a:hover {
     color: #8c2730;
 }
 
-/* --- 3. 二十四節気（美しいグリッド） --- */
+/* --- 3. 国別カード（グリッド） --- */
 .season-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -241,7 +249,6 @@ a:hover {
     border: 1px solid #ede6da;
     padding: 25px;
     border-radius: 6px;
-    position: relative;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -270,7 +277,7 @@ a:hover {
     color: #1a1512;
 }
 
-/* --- 4. 年中行事（タイムライン風リスト） --- */
+/* --- 4. 背景（行事リスト） --- */
 .event-grid {
     display: flex;
     flex-direction: column;
@@ -301,7 +308,7 @@ a:hover {
     line-height: 1;
 }
 
-/* --- 5. 三大素材（セピア調ブロック） --- */
+/* --- 5. 三大テーマ（ステッチボックス） --- */
 .material-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -312,7 +319,7 @@ a:hover {
     background: #faf6f0;
     padding: 25px;
     border-radius: 6px;
-    border: 1px dashed #c9a063; /* 洋風のステッチ風破線 */
+    border: 1px dashed #c9a063;
 }
 
 .material-block h3 {
@@ -322,10 +329,11 @@ a:hover {
     text-align: center;
 }
 
-/* --- 6. 歴史（ロマンチックな年表） --- */
+/* --- 6. 歴史年表（文字重なりバグ修正完了） --- */
 .timeline {
     position: relative;
     padding-left: 30px;
+    margin-top: 20px;
 }
 
 .timeline::before {
@@ -347,26 +355,36 @@ a:hover {
     margin-bottom: 0;
 }
 
+.timeline-header {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* バッジとタイトルの間に確実な余白を確保 */
+    margin-bottom: 10px;
+}
+
 .timeline-era {
-    position: absolute;
-    left: -30px;
-    top: 0;
     background: #8c2730;
     color: #ffffff;
     font-size: 0.75rem;
-    padding: 3px 10px;
+    padding: 4px 12px;
     border-radius: 4px;
     font-weight: bold;
+    flex-shrink: 0; /* バッジが潰れるのを防ぐ */
+    text-align: center;
+    min-width: 80px;
 }
 
-.timeline-content h3 {
+.timeline-header h3 {
     font-size: 1.2rem;
     color: #1a1512;
-    margin-top: 30px;
-    margin-bottom: 8px;
+    margin: 0; /* 余計なマージンをリセット */
 }
 
-/* --- 7. 五感の芸術（クラシックリスト） --- */
+.timeline-content {
+    padding-left: 5px;
+}
+
+/* --- 7. 五感リスト --- */
 .art-list {
     list-style: none;
     margin-top: 20px;
@@ -386,10 +404,10 @@ a:hover {
     font-size: 1.05rem;
 }
 
-/* --- 8. マナー（重要枠） --- */
+/* --- 8. 嗜みフレーム --- */
 .layer-box {
     background: #fdfaf2;
-    border: 2px double #c9a063; /* 洋書風の二重線フレーム */
+    border: 2px double #c9a063;
 }
 
 /* ==========================================================================
@@ -406,11 +424,11 @@ footer {
 }
 
 /* ==========================================================================
-   6. レスポンシブ対応（スマホ・タブレット）
+   6. レスポンシブ対応（スマホ表示時のみ縦型へ変換）
    ========================================================================== */
 @media (max-width: 992px) {
     .main-layout {
-        flex-direction: column; /* 画面が狭くなったら目次を上に、またはレスポンシブ用に配置 */
+        flex-direction: column;
         gap: 40px;
     }
     
@@ -432,19 +450,21 @@ footer {
         padding: 25px;
     }
     
-    /* テーブルをスマホで見やすくカード型に変換 */
+    /* スマホ画面の時だけ、テーブルを縦並びのカード型にする指示 */
+    .wagashi-table, .wagashi-table tbody, .wagashi-table tr, .wagashi-table td {
+        display: block;
+        width: 100% !important;
+    }
     .wagashi-table thead {
         display: none;
     }
     .wagashi-table tr {
-        display: block;
         margin-bottom: 15px;
         border: 1px solid #ede6da;
         padding: 10px;
         background: #fdfcf9;
     }
     .wagashi-table td {
-        display: block;
         text-align: right;
         padding: 8px 5px;
         border-bottom: 1px dotted #eadecc;

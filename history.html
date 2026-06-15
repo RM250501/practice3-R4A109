@@ -21,6 +21,22 @@
 
     <div class="main-layout container">
         
+        <aside class="sidebar">
+            <div class="sticky-menu">
+                <h3>目次</h3>
+                <ul>
+                    <li><a href="#section-classification">1. 西洋文学の形式と分類</a></li>
+                    <li><a href="#section-list">2. 世界を震撼させた名作</a></li>
+                    <li><a href="#section-seasons">3. 主要国における文学の意匠</a></li>
+                    <li><a href="#section-events">4. 文学を動かした文化的背景</a></li>
+                    <li><a href="#section-materials">5. 普遍的な三大テーマ</a></li>
+                    <li><a href="#section-history">6. 西洋文学の激動の歴史</a></li>
+                    <li><a href="#section-art">7. 文学が与える五感の揺らぎ</a></li>
+                    <li><a href="#section-manner">8. 古典文学の嗜み</a></li>
+                </ul>
+            </div>
+        </aside>
+        
         <main class="sub-content">
             
             <section id="section-classification" class="content-section">
@@ -60,27 +76,27 @@
                         <tbody>
                             <tr>
                                 <td class="table-name" data-label="作品名">神曲（しんきょく）</td>
-                                <td>叙事詩</td>
-                                <td>ダンテ（伊）</td>
-                                <td>著者自身が地獄・煉獄・天国を旅する大叙事詩。中世キリスト教の世界観を完璧に具現化した傑作。</td>
+                                <td data-label="ジャンル">叙事詩</td>
+                                <td data-label="著者・国">ダンテ（伊）</td>
+                                <td data-label="特徴・あらすじ">著者自身が地獄・煉獄・天国を旅する大叙事詩。中世キリスト教の世界観を完璧に具現化した傑作。</td>
                             </tr>
                             <tr>
                                 <td class="table-name" data-label="作品名">ハムレット</td>
-                                <td>戯曲（悲劇）</td>
-                                <td>シェイクスピア（英）</td>
-                                <td>父を殺されたデンマーク王子の復讐劇。「生きるべきか、死ぬべきか」という人間存在の根源的な問いを描く。</td>
+                                <td data-label="ジャンル">戯曲（悲劇）</td>
+                                <td data-label="著者・国">シェイクスピア（英）</td>
+                                <td data-label="特徴・あらすじ">父を殺されたデンマーク王子の復讐劇。「生きるべきか、死ぬべきか」という人間存在の根源的な問いを描く。</td>
                             </tr>
                             <tr>
                                 <td class="table-name" data-label="作品名">レ・ミゼラブル</td>
-                                <td>長編小説</td>
-                                <td>ヴィクトル・ユゴー（仏）</td>
-                                <td>パンを盗み19年服役した男の生涯と、激動のフランス社会を描く。愛と人道主義に満ちた大作。</td>
+                                <td data-label="ジャンル">長編小説</td>
+                                <td data-label="著者・国">ヴィクトル・ユゴー（仏）</td>
+                                <td data-label="特徴・あらすじ">パンを盗み19年服役した男の生涯と、激動のフランス社会を描く。愛と人道主義に満ちた大作。</td>
                             </tr>
                             <tr>
                                 <td class="table-name" data-label="作品名">罪と罰</td>
-                                <td>心理小説</td>
-                                <td>ドストエフスキー（露）</td>
-                                <td>「天才の殺人」を正当化しようとした青年が、罪の意識に苦しみ、救済へと向かうサスペンスと哲学の傑作。</td>
+                                <td data-label="ジャンル">心理小説</td>
+                                <td data-label="著者・国">ドストエフスキー（露）</td>
+                                <td data-label="特徴・あらすじ">「天才の殺人」を正当化しようとした青年が、罪の意識に苦しみ、救済へと向かうサスペンスと哲学の傑作。</td>
                             </tr>
                         </tbody>
                     </table>
@@ -161,33 +177,41 @@
                 
                 <div class="timeline">
                     <div class="timeline-item">
-                        <div class="timeline-era">古代</div>
-                        <div class="timeline-content">
+                        <div class="timeline-header">
+                            <span class="timeline-era">古代</span>
                             <h3>神話と古典主義の誕生</h3>
+                        </div>
+                        <div class="timeline-content">
                             <p>ホメロスの叙事詩や、ソポクレスのギリシャ悲劇が誕生。調和、均衡、理性を重んじる「古典主義」の源流がここで形作られました。</p>
                         </div>
                     </div>
 
                     <div class="timeline-item">
-                        <div class="timeline-era">ルネサンス</div>
-                        <div class="timeline-content">
+                        <div class="timeline-header">
+                            <span class="timeline-era">ルネサンス</span>
                             <h3>「人間性」の奪還と大航海時代</h3>
+                        </div>
+                        <div class="timeline-content">
                             <p>神中心の中世暗黒時代を経て、再び人間中心の文化へ。シェイクスピアが人間の複雑な内面を描き、セルバンテスが『ドン・キホーテ』で中世の騎士道幻想を打ち砕きました。</p>
                         </div>
                     </div>
 
                     <div class="timeline-item">
-                        <div class="timeline-era">19世紀前半</div>
-                        <div class="timeline-content">
+                        <div class="timeline-header">
+                            <span class="timeline-era">19世紀前半</span>
                             <h3>ロマン主義（感情と個性の爆発）</h3>
+                        </div>
+                        <div class="timeline-content">
                             <p>理屈や社会のルールに反発し、激しい「感情、情熱、神秘、大自然、主観」を愛した時代。バイロンの詩やユゴーの小説が若者の心を熱狂させました。</p>
                         </div>
                     </div>
 
                     <div class="timeline-item">
-                        <div class="timeline-era">19世紀後半</div>
-                        <div class="timeline-content">
+                        <div class="timeline-header">
+                            <span class="timeline-era">19世紀後半</span>
                             <h3>写実主義・自然主義（冷徹な現実描写）</h3>
+                        </div>
+                        <div class="timeline-content">
                             <p>ロマン主義の夢物語への反動として、社会の格差、人間の醜さ、遺伝や環境の残酷さを、科学者のような目線でありのままに描くリアル路線（リアリズム）が黄金期を迎えました。</p>
                         </div>
                     </div>
@@ -208,25 +232,9 @@
             <section id="section-manner" class="content-section layer-box">
                 <h2>8. 知っておきたい古典文学の嗜み（読み方）</h2>
                 <p>「古典名作は難しそう」と敬遠されがちですが、楽しむための最大のコツは、当時の「歴史パズル」を少しだけ頭に入れておくことです。宗教観や当時の法律を知ると、登場人物がなぜそこまで絶望しているのかが急に見えてきます。</p>
-                <p style="margin-top: 15px;">また、翻訳者によって文章の雰囲気がガラリと変わるのも西洋文学の面白さです。まずは本屋で何種類かの翻訳の「第一ページ目」を読み比べ、一番自分の肌に合う言葉遣いのものを選ぶのが、挫折しないスマートな読書の嗜みです。</p>
+                <p style="margin-top: 15px;">また、翻訳者によって文章の雰囲気がガラリと変わるのも西洋文学の面白さです。まずは本屋で何種類かの翻訳の「第一ページ目」を読み比べ、一番自分の肌に合う言葉遣目のものを選ぶのが、挫折しないスマートな読書の嗜みです。</p>
             </section>
         </main>
-
-        <aside class="sidebar">
-            <div class="sticky-menu">
-                <h3>目次</h3>
-                <ul>
-                    <li><a href="#section-classification">1. 西洋文学の形式と分類</a></li>
-                    <li><a href="#section-list">2. 世界を震撼させた名作</a></li>
-                    <li><a href="#section-seasons">3. 主要国における文学の意匠</a></li>
-                    <li><a href="#section-events">4. 文学を動かした文化的背景</a></li>
-                    <li><a href="#section-materials">5. 普遍的な三大テーマ</a></li>
-                    <li><a href="#section-history">6. 西洋文学の激動の歴史</a></li>
-                    <li><a href="#section-art">7. 文学が与える五感の揺らぎ</a></li>
-                    <li><a href="#section-manner">8. 古典文学の嗜み</a></li>
-                </ul>
-            </div>
-        </aside>
 
     </div>
 
